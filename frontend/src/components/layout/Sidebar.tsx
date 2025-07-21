@@ -18,7 +18,6 @@ import {
   PanelLeftOpen,
   Brain,
 } from "lucide-react"
-import { Link, useLocation } from "react-router-dom"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,6 +26,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Link, useLocation } from "react-router-dom"
+import { Input } from "@/components/ui/input"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { useAuth } from "@/context/AuthContext"
 import { useState } from "react"
 
 // App version - in a real app this would come from environment variables or build config
@@ -67,8 +70,8 @@ export function Sidebar() {
         {expanded ? (
           <>
             <div className="flex items-center">
-              <span className="text-xl font-semibold">Simba</span>
-              <span className="text-xs text-gray-500 ml-2">{APP_VERSION}</span>
+              <span className="text-xl font-semibold">Micco</span>
+              {/* <span className="text-xs text-gray-500 ml-2">{APP_VERSION}</span> */}
             </div>
           </>
         ) : (
