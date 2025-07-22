@@ -97,11 +97,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'KMS_Project',
+        'USER': 'postgres',
+        'PASSWORD': '08032003',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
+# NEOMODEL_NEO4J_BOLT_URL = 'bolt://neo4j:08032003@localhost:7687'
+# NEOMODEL_SIGNALS = False  # Có thể bật nếu bạn cần bắt sự kiện
+# NEO4J_URL      = "bolt://localhost:7687"
+# NEO4J_USERNAME = "neo4j"
+# NEO4J_PASSWORD = "08032003"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

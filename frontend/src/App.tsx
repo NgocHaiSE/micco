@@ -3,11 +3,10 @@ import { MainLayout } from '@/MainLayout';
 import { AuthProvider, ProtectedRoute } from '@/context/AuthContext';
 
 import ChatApp from '@/pages/ChatApp';
+import DocumentsPage from '@/pages/Documents';
 import Login from '@/pages/auth/Login';
-import Signup from '@/pages/auth/SignUp';
+import Signup from '@/pages/auth/Signup';
 import ResetPassword from '@/pages/auth/ResetPassword';
-
-// Use a direct path to the worker from node_modules
 
 function App() {
   return (
@@ -23,6 +22,11 @@ function App() {
               <ChatApp />
             </ProtectedRoute>
             } />  
+          <Route path="/documents" element={
+            <ProtectedRoute>
+              <DocumentsPage />
+            </ProtectedRoute>
+            } />
           <Route path="*" element={<div className="p-8 text-center">Page Not Found</div>} />
         </Route>
       </Routes>
