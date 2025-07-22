@@ -1,30 +1,25 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
-from .models import User
+from .models import CustomUser
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id', 'email', 'first_name', 'last_name', 'is_email_verified', 'created_at']
-        read_only_fields = ['id', 'created_at', 'is_email_verified']
+        model = CustomUser
+        fields = ['id', 'email', 'is_active', 'created_at']
+        read_only_fields = ['id', 'created_at']
 
 class SignUpSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, validators=[validate_password])
-    metadata = serializers.DictField(required=False, allow_empty=True)
     
     class Meta:
-        model = User
-        fields = ['email', 'password', 'first_name', 'last_name', 'metadata']
+        model = CustomUser
+        fields = ['email', 'password']
     
     def create(self, validated_data):
-        metadata = validated_data.pop('metadata', {})
-        user = User.objects.create_user(
-            username=validated_data['email'],  # Use email as username
+        user = CustomUser.objects.create_user(
             email=validated_data['email'],
-            password=validated_data['password'],
-            first_name=validated_data.get('first_name', ''),
-            last_name=validated_data.get('last_name', '')
+            password=validated_data['password']
         )
         return user
 

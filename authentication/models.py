@@ -34,9 +34,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    
-    # Additional fields for metadata
-    metadata = models.JSONField(default=dict, blank=True)
 
     objects = CustomUserManager()
 

@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api',
+    'authentication',
 ]
+
+# Custom User Model
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -66,11 +70,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ]
 }
-
-# Static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),
-]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -98,7 +97,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'KMS_Project',
+        'NAME': 'micco',
         'USER': 'postgres',
         'PASSWORD': '08032003',
         'HOST': 'localhost',
